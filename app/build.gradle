@@ -62,4 +62,8 @@ dependencies {
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
+
+    //ours
+    implementation 'com.rmtheis:tess-two:9.0.0'
+    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:19.0.0'
 }
