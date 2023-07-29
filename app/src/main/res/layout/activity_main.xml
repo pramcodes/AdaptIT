@@ -7,8 +7,8 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="384dp"
+        android:layout_height="575dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,51 +18,90 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="61dp"
-            android:text="Please enter your Usename and Password" />
+            android:layout_height="39dp"
+            android:text="@string/please_enter_your_usename_and_password"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName3"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextEnterEmail2"
             android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:height="50dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:layout_height="58dp"
+            android:hint="Email"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_13ssp"
+            tools:ignore="HardcodedText,TextContrastCheck" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName4"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextEnterPassword2"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:layout_height="50dp"
+            android:hint="Password"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_13ssp"
+            tools:ignore="HardcodedText,TextContrastCheck" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="222dp"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/goToActivity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Go to Activity" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSignIn2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:backgroundTint="@color/primary"
+                android:text="SIGN IN"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/biometric_login"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:backgroundTint="@color/primary"
+                android:text="@string/biometric_login" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/lblCreateNewAccount2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:text="No Account yet?"
+                android:textAlignment="center"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/goToActivity"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Finger login" />
+                android:backgroundTint="@color/primary"
+                android:text="@string/create_account" />
+
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
