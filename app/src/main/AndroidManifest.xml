@@ -19,6 +19,15 @@
         android:theme="@style/Theme.AdaptIT"
         tools:targetApi="31">
         <activity
+            android:name=".myLogin"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
             android:name=".AbdullahOCR"
             android:exported="false" />
         <activity
