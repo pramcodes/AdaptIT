@@ -11,10 +11,12 @@ import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+//import android.hardware.biometrics.BiometricManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -29,10 +31,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_main);
 
         // Lets user authenticate using either a Class 3 biometric or
         // their lock screen credential (PIN, pattern, or password).
+
+        Button goToActivity = (Button) findViewById(R.id.goToActivity);
+        goToActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AbdullahOCR.class);
+                startActivity(intent);
+            }
+        });
 
         BiometricManager biometricManager = BiometricManager.from(this);
         switch (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG | BiometricManager.Authenticators.DEVICE_CREDENTIAL)) {
@@ -96,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         // Prompt appears when user clicks "Log in".
         // Consider integrating with the keystore to unlock cryptographic operations,
         // if needed by your app.
-        Button biometricLoginButton = findViewById(R.id.biometric_login);
-        biometricLoginButton.setOnClickListener(view -> biometricPrompt.authenticate(promptInfo));
+//        Button biometricLoginButton = findViewById(R.id.biometric_login);
+//        biometricLoginButton.setOnClickListener(view -> biometricPrompt.authenticate(promptInfo));
     }
 }
