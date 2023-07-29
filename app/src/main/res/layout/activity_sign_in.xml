@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:overScrollMode="never"
+    android:padding="@dimen/_24sdp"
+    android:scrollbars="none"
+    tools:context=".activities.MainActivity"
+    tools:ignore="SpeakableTextPresentCheck">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/lblSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:text="Welcome Back!"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/lblLoginToContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:text="Login to continue"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutEnterEmail"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_40sdp"
+            app:boxStrokeColor="@color/primary"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/primary"
+            android:textColorHint="@color/primary"
+            app:helperText="Required*"
+            app:helperTextTextColor="@color/red"
+            app:startIconDrawable="@drawable/ic_email"
+            app:startIconTint="@color/primary"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_error"
+            app:errorIconTint="@color/red"
+            app:errorTextColor="@color/red"
+            app:boxStrokeErrorColor="@color/red">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditTextEnterEmail"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:hint="Email"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:paddingStart="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_16sdp"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/_13ssp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutEnterPassword"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:boxStrokeColor="@color/primary"
+            app:endIconTint="@color/primary"
+            app:endIconMode="password_toggle"
+            android:textColorHint="@color/primary"
+            app:hintTextColor="@color/primary"
+            app:helperText="Required*"
+            app:helperTextTextColor="@color/red"
+            app:startIconDrawable="@drawable/ic_lock"
+            app:startIconTint="@color/primary"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_error"
+            app:errorIconTint="@color/red"
+            app:errorTextColor="@color/red"
+            app:boxStrokeErrorColor="@color/red">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditTextEnterPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Password"
+                android:imeOptions="actionDone"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:paddingStart="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_16sdp"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/_13ssp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/lblForgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="Forgot Password?"
+            android:textColor="@color/secondary_text"
+            tools:ignore="HardcodedText"
+            android:textStyle="bold"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:text="SIGN IN"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <ProgressBar
+                android:id="@+id/signInProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="invisible"/>
+
+        </FrameLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/lblCreateNewAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:text="No Account yet? Create New Account!"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/_13ssp"
+            tools:ignore="HardcodedText"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</ScrollView>
