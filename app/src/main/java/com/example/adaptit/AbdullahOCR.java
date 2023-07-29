@@ -38,6 +38,8 @@ import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AbdullahOCR extends AppCompatActivity {
 
@@ -45,6 +47,7 @@ public class AbdullahOCR extends AppCompatActivity {
     private MaterialButton recognizeTextBtn;
     private ShapeableImageView imageIv;
     private EditText recognizedTextEt;
+    public String IDno;
 
     private static final String TAG = "MAIN_TAG";
 
@@ -113,9 +116,18 @@ public class AbdullahOCR extends AppCompatActivity {
                         public void onSuccess(Text text) {
                             progressDialog.dismiss();
                             String recognisedText = text.getText();
-                            Log.d(TAG, "onSucess: recognizedText: "+ recognisedText);
-                            recognizedTextEt.setText(recognisedText);
+                            Log.d(TAG, "onSuccess: recognizedText: " + recognisedText);
+
+                            // Using regular expression to find the ID number
+                            Pattern pattern = Pattern.compile("(?<=.D\\. No\\. )\\d{6} \\d{4} \\d{3}");
+                            Matcher matcher = pattern.matcher(recognisedText);
+                            if (matcher.find()) {
+                                IDno = matcher.group();
+                            }
+//                            recognizedTextEt.setText(recognisedText + " we took out " + IDno);
+                            recognizedTextEt.setText(IDno);
                         }
+
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override

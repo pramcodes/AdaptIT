@@ -51,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-//        Button register = (Button) findViewById(R.id.register);
-//        register.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, Login.class);
-//                startActivity(intent);
-//            }
-//        });
+        Button register = (Button) findViewById(R.id.register);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Register.class);
+                startActivity(intent);
+            }
+        });
 
         BiometricManager biometricManager = BiometricManager.from(this);
         switch (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG | BiometricManager.Authenticators.DEVICE_CREDENTIAL)) {

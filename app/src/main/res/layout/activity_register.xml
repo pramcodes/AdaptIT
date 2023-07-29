@@ -7,12 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".Register">
 
-
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +38,29 @@
             android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID:"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:id="@+id/IDtxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Provide a picture of you ID"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/_13ssp" />
+        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditTextEnterEmail"
@@ -67,12 +90,44 @@
             android:id="@+id/btnSignIn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
+            android:backgroundTint="@color/primary"
             android:text="SIGN UP"
             android:textColor="@color/white"
             android:textSize="@dimen/_13ssp"
             android:textStyle="bold"
-            tools:ignore="HardcodedText"
-            android:backgroundTint="@color/primary"/>
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/camerabtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cornerRadius="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:icon="@drawable/baseline_add_a_photo_24"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/gallerybtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cornerRadius="50dp"
+        app:icon="@drawable/baseline_image_24"
+        app:layout_constraintStart_toEndOf="@+id/camerabtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageIv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/baseline_image_24"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="2dp"
+        android:visibility="invisible"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
