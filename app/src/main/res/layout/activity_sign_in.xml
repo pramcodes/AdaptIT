@@ -155,5 +155,11 @@
             android:textSize="@dimen/_13ssp"
             tools:ignore="HardcodedText"
             android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/biometric_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
     </LinearLayout>
 </ScrollView>
