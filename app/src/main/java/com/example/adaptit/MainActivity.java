@@ -10,6 +10,7 @@ import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 
+import android.content.Context;
 import android.content.Intent;
 //import android.hardware.biometrics.BiometricManager;
 import android.os.Build;
@@ -18,12 +19,15 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.concurrent.Executor;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView email;
+    private TextView password;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
 
@@ -33,26 +37,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        email = findViewById(R.id.emailtxt);
+        password = findViewById(R.id.passwordtxt);
+
         // Lets user authenticate using either a Class 3 biometric or
         // their lock screen credential (PIN, pattern, or password).
+//        Button goToActivity = (Button) findViewById(R.id.goToActivity);
+//        goToActivity.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, AbdullahOCR.class);
+//                startActivity(intent);
+//            }
+//        });
 
-        Button goToActivity = (Button) findViewById(R.id.goToActivity);
-        goToActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AbdullahOCR.class);
-                startActivity(intent);
-            }
-        });
-
-        Button register = (Button) findViewById(R.id.register);
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Login.class);
-                startActivity(intent);
-            }
-        });
+//        Button register = (Button) findViewById(R.id.register);
+//        register.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, Login.class);
+//                startActivity(intent);
+//            }
+//        });
 
         BiometricManager biometricManager = BiometricManager.from(this);
         switch (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG | BiometricManager.Authenticators.DEVICE_CREDENTIAL)) {
@@ -82,28 +88,22 @@ public class MainActivity extends AppCompatActivity {
         biometricPrompt = new BiometricPrompt(MainActivity.this,
                 executor, new BiometricPrompt.AuthenticationCallback() {
             @Override
-            public void onAuthenticationError(int errorCode,
-                                              @NonNull CharSequence errString) {
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                Toast.makeText(getApplicationContext(),
-                                "Authentication error: " + errString, Toast.LENGTH_SHORT)
-                        .show();
+                toast(getApplicationContext(), "Biometrics Failed, try to login with email and password");
             }
 
             @Override
-            public void onAuthenticationSucceeded(
-                    @NonNull BiometricPrompt.AuthenticationResult result) {
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-                Toast.makeText(getApplicationContext(),
-                        "Authentication succeeded!", Toast.LENGTH_SHORT).show();
+                toast(getApplicationContext(), "Authentication Successful");
+                goToOCR();
             }
 
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
-                Toast.makeText(getApplicationContext(), "Authentication failed",
-                                Toast.LENGTH_SHORT)
-                        .show();
+                toast(getApplicationContext(), "Authentication Failed");
             }
         });
 
@@ -113,10 +113,21 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButtonText("Use account password")
                 .build();
 
+        biometricPrompt.authenticate(promptInfo);
+
         // Prompt appears when user clicks "Log in".
         // Consider integrating with the keystore to unlock cryptographic operations,
         // if needed by your app.
-        Button biometricLoginButton = findViewById(R.id.biometric_login);
-        biometricLoginButton.setOnClickListener(view -> biometricPrompt.authenticate(promptInfo));
+//        Button biometricLoginButton = findViewById(R.id.biometric_login);
+//        biometricLoginButton.setOnClickListener(view -> biometricPrompt.authenticate(promptInfo));
+    }
+
+    private void goToOCR(){
+        Intent intent = new Intent(MainActivity.this, AbdullahOCR.class);
+        startActivity(intent);
+    }
+
+    public void toast(Context context, String message){
+        android.widget.Toast.makeText(context, message, android.widget.Toast.LENGTH_SHORT).show();
     }
 }

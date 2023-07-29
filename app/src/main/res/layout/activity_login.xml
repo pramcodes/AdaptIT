@@ -7,8 +7,8 @@
     tools:context=".Login">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="384dp"
+        android:layout_height="575dp"
         android:orientation="vertical"
         android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,75 +37,93 @@
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:text="@string/please_enter_your_usename_and_password"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditTextEnterEmail"
+            android:id="@+id/emailtxt"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:hint="Email"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
             android:textColor="@color/primary_text"
             android:textSize="@dimen/_13ssp"
             tools:ignore="HardcodedText,TextContrastCheck" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditTextEnterPassword"
+            android:id="@+id/passwordtxt"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Password"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:inputType="textPassword"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
             android:textColor="@color/primary_text"
             android:textSize="@dimen/_13ssp"
             tools:ignore="HardcodedText,TextContrastCheck" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/lblForgotPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:text="Forgot Password?"
-            android:textColor="@color/secondary_text"
-            tools:ignore="HardcodedText"
-            android:textStyle="bold"/>
-
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="222dp"
+            android:orientation="vertical">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSignIn"
+                android:id="@+id/btnSignIn2"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
-                android:text="SIGN UP"
+                android:backgroundTint="@color/primary"
+                android:text="SIGN IN"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13ssp"
                 android:textStyle="bold"
-                tools:ignore="HardcodedText"
-                android:backgroundTint="@color/primary"/>
+                tools:ignore="HardcodedText" />
 
-            <ProgressBar
-                android:id="@+id/signInProgressBar"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/biometric_login"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:backgroundTint="@color/primary"
+                android:text="@string/biometric_login" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/lblCreateNewAccount2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:visibility="invisible"/>
+                android:layout_marginTop="@dimen/_30sdp"
+                android:text="No Account yet?"
+                android:textAlignment="center"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
-        </FrameLayout>
+        </LinearLayout>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/lblCreateNewAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No Account yet? Create New Account!"
-            android:textColor="@color/primary"
-            android:textSize="@dimen/_13ssp"
-            tools:ignore="HardcodedText"
-            android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:orientation="horizontal">
 
+            <Button
+                android:id="@+id/goToActivity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/primary"
+                android:text="@string/create_account" />
+
+        </LinearLayout>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
