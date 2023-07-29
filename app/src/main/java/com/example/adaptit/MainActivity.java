@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 final Intent enrollIntent = new Intent(Settings.ACTION_BIOMETRIC_ENROLL);
                 enrollIntent.putExtra(Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
                         BIOMETRIC_STRONG | DEVICE_CREDENTIAL);
-                startActivityForResult(enrollIntent, 1);
+                startActivityForResult(enrollIntent, 11);
                 break;
             case BiometricManager.BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED:
             case BiometricManager.BIOMETRIC_ERROR_UNSUPPORTED:
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         // Prompt appears when user clicks "Log in".
         // Consider integrating with the keystore to unlock cryptographic operations,
         // if needed by your app.
-//        Button biometricLoginButton = findViewById(R.id.biometric_login);
-//        biometricLoginButton.setOnClickListener(view -> biometricPrompt.authenticate(promptInfo));
+        Button biometricLoginButton = findViewById(R.id.biometric_login);
+        biometricLoginButton.setOnClickListener(view -> biometricPrompt.authenticate(promptInfo));
     }
 }

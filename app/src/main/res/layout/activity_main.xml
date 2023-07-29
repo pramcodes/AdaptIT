@@ -56,6 +56,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Go to Activity" />
+
+            <Button
+                android:id="@+id/biometric_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Finger login" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
