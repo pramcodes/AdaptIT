@@ -8,7 +8,7 @@
     android:overScrollMode="never"
     android:padding="@dimen/_24sdp"
     android:scrollbars="none"
-    tools:context=".activities.MainActivity"
+    tools:context=".MainActivity"
     tools:ignore="SpeakableTextPresentCheck">
 
     <LinearLayout
@@ -133,7 +133,8 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13ssp"
                 android:textStyle="bold"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                android:backgroundTint="@color/primary"/>
 
             <ProgressBar
                 android:id="@+id/signInProgressBar"
@@ -154,5 +155,11 @@
             android:textSize="@dimen/_13ssp"
             tools:ignore="HardcodedText"
             android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/biometric_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
     </LinearLayout>
 </ScrollView>
