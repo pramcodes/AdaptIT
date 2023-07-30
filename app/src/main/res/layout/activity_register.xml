@@ -1,133 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Register">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
+    <EditText
+        android:id="@+id/txtPassword2"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/edittext_background"
+        android:drawableStart="@drawable/password"
+        android:ems="10"
+        android:hint=" Enter Password"
+        android:inputType="textPassword"
+        android:text=""
+        android:textColor="#756c6c"
+        android:textColorHint="#756c6c"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail2" />
+
+    <EditText
+        android:id="@+id/txtEmail2"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/edittext_background"
+        android:drawableStart="@drawable/email"
+        android:ems="10"
+        android:hint=" Enter Email"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColor="#756c6c"
+        android:textColorHint="#756c6c"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/lblSignIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Welcome Back!"
-            android:textColor="@color/primary_text"
-            android:textSize="@dimen/_18ssp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/lblLoginToContinue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:text="Login to continue"
-            android:textColor="@color/secondary_text"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/lblID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ID:"
-                android:textColor="@color/primary_text"
-                android:textSize="@dimen/_13ssp" />
-
-            <TextView
-                android:id="@+id/IDtxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Provide a picture of you ID"
-                android:textColor="@color/primary_text"
-                android:textSize="@dimen/_13ssp" />
-        </LinearLayout>
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditTextEnterEmail"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:hint="Email"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/primary_text"
-            android:textSize="@dimen/_13ssp"
-            tools:ignore="HardcodedText,TextContrastCheck" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditTextEnterPassword"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Password"
-            android:imeOptions="actionDone"
-            android:importantForAutofill="no"
-            android:inputType="textPassword"
-            android:textColor="@color/primary_text"
-            android:textSize="@dimen/_13ssp"
-            tools:ignore="HardcodedText,TextContrastCheck" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSignIn"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            android:backgroundTint="@color/primary"
-            android:text="SIGN UP"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_13ssp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/imageIv"
+        app:layout_constraintVertical_bias="0.296" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/camerabtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="56dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="48dp"
         app:cornerRadius="50dp"
+        app:icon="@drawable/baseline_add_a_photo_24"
+        app:layout_constraintBottom_toTopOf="@+id/imageIv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.312"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:icon="@drawable/baseline_add_a_photo_24"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/gallerybtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="53dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="48dp"
         app:cornerRadius="50dp"
         app:icon="@drawable/baseline_image_24"
+        app:layout_constraintBottom_toTopOf="@+id/imageIv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.165"
         app:layout_constraintStart_toEndOf="@+id/camerabtn"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageIv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="306dp"
+        android:layout_height="171dp"
         android:adjustViewBounds="true"
         android:src="@drawable/baseline_image_24"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.276"
+        app:srcCompat="@drawable/top_background"
+        app:strokeWidth="2dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSignIn"
+        android:layout_width="345dp"
+        android:layout_height="65dp"
+        android:background="@drawable/button_background"
+        android:text="SIGN UP"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/primary"
+        app:backgroundTintMode="screen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail2"
+        app:layout_constraintVertical_bias="0.587"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/IDtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Please provide a picture of you ID"
+        android:textColor="@color/primary_text"
+        android:textColorHighlight="@color/pink"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintBottom_toTopOf="@+id/imageIv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeWidth="2dp"
-        android:visibility="invisible"/>
+        app:layout_constraintVertical_bias="0.179" />
+
+    <TextView
+        android:id="@+id/lblID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID number:"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintBottom_toTopOf="@+id/txtEmail2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageIv"
+        app:layout_constraintVertical_bias="0.523" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
