@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButtonText("Use account password")
                 .build();
 
-        biometricPrompt.authenticate(promptInfo);
+//        biometricPrompt.authenticate(promptInfo);
 
         biometrics = findViewById(R.id.biometric);
 

@@ -47,7 +47,7 @@ public class AbdullahOCR extends AppCompatActivity {
     private MaterialButton recognizeTextBtn;
     private ShapeableImageView imageIv;
     private EditText recognizedTextEt;
-    public String IDno;
+    public String IDno = "Your ID is ";
 
     private static final String TAG = "MAIN_TAG";
 
