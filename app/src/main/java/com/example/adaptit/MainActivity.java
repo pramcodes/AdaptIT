@@ -2,6 +2,7 @@ package com.example.adaptit;
 
 import static android.hardware.biometrics.BiometricManager.Authenticators.BIOMETRIC_STRONG;
 import static android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL;
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -27,7 +28,7 @@ import java.util.concurrent.Executor;
 public class MainActivity extends AppCompatActivity {
 
     private TextView email;
-    private TextView password;
+    private TextView password , biometrics;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
 
@@ -37,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        email = findViewById(R.id.emailtxt);
-        password = findViewById(R.id.passwordtxt);
+        email = findViewById(R.id.txtEmail);
+        password = findViewById(R.id.txtPassword);
 
         // Lets user authenticate using either a Class 3 biometric or
         // their lock screen credential (PIN, pattern, or password).
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        Button register = (Button) findViewById(R.id.register);
+        Button register = (Button) findViewById(R.id.btnRegister);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,6 +115,15 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         biometricPrompt.authenticate(promptInfo);
+
+        biometrics = findViewById(R.id.biometric);
+
+        biometrics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                biometricPrompt.authenticate(promptInfo);
+            }
+        });
 
         // Prompt appears when user clicks "Log in".
         // Consider integrating with the keystore to unlock cryptographic operations,

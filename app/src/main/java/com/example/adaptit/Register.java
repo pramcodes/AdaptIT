@@ -18,6 +18,6 @@ public class Register extends AppCompatActivity {
         camerabtn = findViewById(R.id.camerabtn);
         gallerybtn = findViewById(R.id.gallerybtn);
         imageIv = findViewById(R.id.imageIv);
-        OCR ocr = new OCR(Register.this, camerabtn, gallerybtn, getContentResolver(), imageIv);
+        //OCR ocr = new OCR(Register.this, camerabtn, gallerybtn, getContentResolver(), imageIv);
     }
 }
