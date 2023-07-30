@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1013567056185",
+    "project_id": "adaptit-1a747",
+    "storage_bucket": "adaptit-1a747.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013567056185:android:5ab12b0c6e7ed3ea7b20e8",
+        "android_client_info": {
+          "package_name": "com.example.adaptit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1013567056185-gej6j9f7c69v2c47el5cbf455h2a429e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.adaptit",
+            "certificate_hash": "29778570f34c010f0a6d2e5d97e1685ddf0e9f39"
+          }
+        },
+        {
+          "client_id": "1013567056185-korvd1tu03vhv6jqq1j6o85n562u45ue.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVN0kmweIdC32gCOitWEdHdWbmrh8UYJs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1013567056185-korvd1tu03vhv6jqq1j6o85n562u45ue.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

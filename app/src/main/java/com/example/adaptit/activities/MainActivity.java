@@ -1,8 +1,16 @@
-package com.example.adaptit;
+package com.example.adaptit.activities;
 
 import static android.hardware.biometrics.BiometricManager.Authenticators.BIOMETRIC_STRONG;
 import static android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -11,24 +19,20 @@ import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 
-import android.content.Context;
-import android.content.Intent;
-//import android.hardware.biometrics.BiometricManager;
-import android.os.Build;
-import android.os.Bundle;
-import android.provider.Settings;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import com.example.adaptit.databinding.ActivityMainBinding;
+import com.example.adaptit.utilities.Constants;
+import com.example.adaptit.utilities.PreferenceManager;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.concurrent.Executor;
 
-public class MainActivity extends AppCompatActivity {
-
-    private TextView email;
-    private TextView password , biometrics;
+public class MainActivity extends AppCompatActivity
+{
+    private ActivityMainBinding binding;
+    private PreferenceManager preferenceManager;
+    private FirebaseFirestore database;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
 
@@ -36,30 +40,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        email = findViewById(R.id.txtEmail);
-        password = findViewById(R.id.txtPassword);
-
-        // Lets user authenticate using either a Class 3 biometric or
-        // their lock screen credential (PIN, pattern, or password).
-//        Button goToActivity = (Button) findViewById(R.id.goToActivity);
-//        goToActivity.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, AbdullahOCR.class);
-//                startActivity(intent);
-//            }
-//        });
-
-        Button register = (Button) findViewById(R.id.btnRegister);
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Register.class);
-                startActivity(intent);
-            }
-        });
+        init();
+        setContentView(binding.getRoot());
+        setListeners();
 
         BiometricManager biometricManager = BiometricManager.from(this);
         switch (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG | BiometricManager.Authenticators.DEVICE_CREDENTIAL)) {
@@ -98,7 +81,9 @@ public class MainActivity extends AppCompatActivity {
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 toast(getApplicationContext(), "Authentication Successful");
-                goToOCR();
+                Intent intent = new Intent(getApplicationContext(), Home.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
 
             @Override
@@ -115,26 +100,59 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
 //        biometricPrompt.authenticate(promptInfo);
-
-        biometrics = findViewById(R.id.biometric);
-
-        biometrics.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                biometricPrompt.authenticate(promptInfo);
-            }
-        });
-
-        // Prompt appears when user clicks "Log in".
-        // Consider integrating with the keystore to unlock cryptographic operations,
-        // if needed by your app.
-//        Button biometricLoginButton = findViewById(R.id.biometric_login);
-//        biometricLoginButton.setOnClickListener(view -> biometricPrompt.authenticate(promptInfo));
     }
 
-    private void goToOCR(){
-        Intent intent = new Intent(MainActivity.this, AbdullahOCR.class);
-        startActivity(intent);
+    private void init(){
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        database = FirebaseFirestore.getInstance();
+        preferenceManager = new PreferenceManager(getApplicationContext());
+    }
+
+    private void setListeners(){
+        binding.btnRegister.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, Register.class);
+            startActivity(intent);
+        });
+
+        binding.biometric.setOnClickListener(view -> biometricPrompt.authenticate(promptInfo));
+
+        binding.btnSignIn.setOnClickListener(view -> {
+            String email = binding.txtEmail.getText().toString().trim();
+            String password = binding.txtPassword.getText().toString().trim();
+
+            if(email.isEmpty() || password.isEmpty())
+                toast(getApplicationContext(),"Make sure data is valid");
+            else
+                signIn();
+        });
+    }
+
+    private void signIn(){
+        String email = binding.txtEmail.getText().toString().trim();
+        String password = binding.txtPassword.getText().toString().trim();
+
+        String hashedPassword = BCrypt.hashpw(password, email.substring(0,4));
+
+        database.collection(Constants.KEY_COLLECTION_USERS)
+                .whereEqualTo(Constants.KEY_EMAIL, email)
+                .whereEqualTo(Constants.KEY_PASSWORD, hashedPassword)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size() > 0) {
+                        preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN, true);
+                        preferenceManager.putString(Constants.KEY_EMAIL, email);
+                        preferenceManager.putString(Constants.KEY_NATIONAL_ID, task.getResult().getDocuments().get(0).getString(Constants.KEY_NATIONAL_ID));
+                        Intent intent = new Intent(getApplicationContext(), Home.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
+                    else if(task.getResult() == null){
+                        Toast.makeText(this, "Incorrect email or password", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(this, "Unable to sign in. Check internet connection", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     public void toast(Context context, String message){

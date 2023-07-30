@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Register">
+    tools:context=".activities.Register">
 
     <EditText
         android:id="@+id/txtPassword2"
@@ -16,6 +16,7 @@
         android:drawableStart="@drawable/password"
         android:ems="10"
         android:hint=" Enter Password"
+        android:drawablePadding="@dimen/_5sdp"
         android:inputType="textPassword"
         android:text=""
         android:textColor="#756c6c"
@@ -24,7 +25,8 @@
         app:layout_constraintBottom_toTopOf="@+id/btnSignIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail2"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/txtEmail2"
@@ -40,54 +42,42 @@
         android:textColor="#756c6c"
         android:textColorHint="#756c6c"
         android:textSize="18sp"
+        android:drawablePadding="@dimen/_5sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageIv"
-        app:layout_constraintVertical_bias="0.296" />
+        app:layout_constraintVertical_bias="0.296"
+        tools:ignore="HardcodedText"
+        android:importantForAutofill="no" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/camerabtn"
-        android:layout_width="56dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="48dp"
-        app:cornerRadius="50dp"
-        app:icon="@drawable/baseline_add_a_photo_24"
-        app:layout_constraintBottom_toTopOf="@+id/imageIv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.312"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/gallerybtn"
-        android:layout_width="53dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="48dp"
-        app:cornerRadius="50dp"
-        app:icon="@drawable/baseline_image_24"
-        app:layout_constraintBottom_toTopOf="@+id/imageIv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.165"
-        app:layout_constraintStart_toEndOf="@+id/camerabtn"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.imageview.ShapeableImageView
+    <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/imageIv"
-        android:layout_width="306dp"
-        android:layout_height="171dp"
+        android:layout_width="345dp"
+        android:layout_height="198dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/baseline_image_24"
+        android:background="@drawable/background_image"
+        android:src="@drawable/baseline_add_a_photo_24"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276"
+        app:layout_constraintVertical_bias="0.229"
         app:srcCompat="@drawable/top_background"
         app:strokeWidth="2dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/lblID"
+        app:layout_constraintStart_toEndOf="@+id/lblID"
+        app:layout_constraintTop_toTopOf="@+id/lblID"
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSignIn"
@@ -104,23 +94,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEmail2"
-        app:layout_constraintVertical_bias="0.587"
+        app:layout_constraintVertical_bias="0.715"
         tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/IDtxt"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Please provide a picture of you ID"
+        android:text="Please insert a photo of your ID"
         android:textColor="@color/primary_text"
         android:textColorHighlight="@color/pink"
-        android:textSize="@dimen/_13ssp"
+        android:textSize="@dimen/_18ssp"
         app:layout_constraintBottom_toTopOf="@+id/imageIv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.179" />
+        app:layout_constraintVertical_bias="0.493"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/lblID"
@@ -134,6 +126,7 @@
         app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageIv"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintVertical_bias="0.523"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
