@@ -30,12 +30,10 @@ Follow these steps to get the project up and running on your local machine:
 
 ## Acknowledgements
 
-We would like to express our gratitude to the following contributors for their valuable efforts and contributions to this project:
+I would like to express my gratitude to my friends for their valuable efforts and contributions to this project:
 
 - [Muhammed Abdullah](https://github.com/Steady-135)
 - [Banzile Nhlebela](https://github.com/nhlebelabz74)
-
-Thank you for your dedication and teamwork!
 
 
    
